@@ -1,2 +1,2 @@
 # sonGrade
-App for ranking of songs from user input (beta)
+App for ranking songs based on user input (beta)

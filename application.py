@@ -16,8 +16,6 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 # Ensure responses aren't cached
-
-
 @app.after_request
 def after_request(response):
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
@@ -34,12 +32,9 @@ Session(app)
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///songrade.db")
 
-# Merge_sort algorithm (used to rank the songs) source: https://www.tutorialspoint.com/python/python_sorting_algorithms.htm
-
-
-def merge(left_half,right_half):
+# Merge_sort algorithm (used to rank the songs)
+def merge(left_half, right_half):
     """Merge the sorted halves"""
-
     res = []
     while len(left_half) != 0 and len(right_half) != 0:
         if left_half[0]["avgRate"] < right_half[0]["avgRate"]:
@@ -57,7 +52,7 @@ def merge(left_half,right_half):
 def merge_sort(unsorted_list):
     if len(unsorted_list) <= 1:
         return unsorted_list
-# Find the middle point and divide it
+    # Find the middle point and divide it
     middle = len(unsorted_list) // 2
     left_list = unsorted_list[:middle]
     right_list = unsorted_list[middle:]
@@ -104,7 +99,7 @@ def search():
         songs = db.execute("SELECT * FROM allSongs WHERE title = :title AND artist = :artist",
                            title=request.form.get("song"), artist=request.form.get("artist"))
 
-        #  If song doesn't exist in database, save song id and insert song
+        # If song doesn't exist in database, save song id and insert song
         if not songs:
             entry = db.execute("INSERT INTO allSongs (title, artist) VALUES(:title, :artist)",
                                title=request.form.get("song"), artist=request.form.get("artist"))

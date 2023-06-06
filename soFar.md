@@ -18,7 +18,7 @@ Submission will take the user to a page that confirms that they chose the
 correct song, allowing them to quit if they made a mistake, or proceed
 to the Quick Rate page.
 
-On the Quick Rate page, there is a sliding range form, which allow the user
+On the Quick Rate page, there is a sliding range form, which allows the user
 to rate the song they chose from 0 to 100. The user can rate the song as 0,
 10, 20, 30, 40, 50, 60, 70, 80, 90, or 100. Upon submission, the rating is
 entered into a database of all song entries, and if the rating puts the song
